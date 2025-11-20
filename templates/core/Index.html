@@ -1,0 +1,205 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        {% for i in slide %}
+        <div class="row align-items-center">
+          
+          <div class="col-lg-6">
+            <div class="hero-content">
+              <span class="wow fadeInLeft" data-wow-delay=".2s">{{i.title}}</span>
+              <h1 class="wow fadeInUp" data-wow-delay=".4s">{{i.description}}</h1>
+              <p class="wow fadeInUp" data-wow-delay=".6s">
+                {{i.message}}
+              </p>
+              <a href="#" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Buy Now</a>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+              <img src={{i.image.url}} alt="Hero Image" />
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Client Logos -->
+    <section class="client-logo-section pt-150">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-logo text-center">
+              <img src="{% static 'img/client-logo/lineicons.svg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-logo text-center">
+              <img src="{% static 'img/client-logo/uideck.svg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-logo text-center">
+              <img src="{% static 'img/client-logo/pagebulb.svg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-logo text-center">
+              <img src="{% static 'img/client-logo/graygrids.svg' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section pt-150">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="about-img mb-50">
+              <img src="{{about.image.url}}" alt="about">
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="about-content mb-50">
+              <div class="section-title mb-50">
+                <h1 class="mb-25">{{about.title}}</h1>
+              </div>
+
+              <!-- Accordion -->
+              <div class="accordion pb-15" id="accordionExample">
+                <div class="single-faq">
+                  <button class="w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                    {{about.description}}
+                  </button>
+                </div>
+              </div>
+              
+              <a href="#" class="main-btn btn-hover">View More</a>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="service" class="service-section img-bg pt-100 pb-100 mt-150">
+      <div class="container">
+        
+        <div class="section-title text-center mb-50">
+          <h1>Our services</h1>
+        </div>
+        <div class="row">
+          {% for i in service %}
+          <div class="col-xl-3 col-md-6">
+            <div class="single-service">
+                <img src="{{i.icon.url}}" >
+              <h3>{{i.title}}</h3>
+              <p>{{i.description}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="view-all-btn text-center pt-30">
+          <a href="#" class="main-btn btn-hover">View All Services</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter-up-section pt-150">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-6">
+            <div class="section-title mb-40">
+              <h1>Why we are the best?</h1>
+            </div>
+
+            <div class="counter-up-wrapper">
+              <div class="row">
+                
+                <div class="col-lg-6 col-sm-6">
+                  <div class="single-counter">
+                    <div class="icon color-1"><i class="lni lni-emoji-smile"></i></div>
+                    <h1 class="countup">3642</h1>
+                    <span>Happy Clients</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                  <div class="single-counter">
+                    <div class="icon color-2"><i class="lni lni-checkmark"></i></div>
+                    <h1 class="countup">5436</h1>
+                    <span>Projects Done</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                  <div class="single-counter">
+                    <div class="icon color-3"><i class="lni lni-world"></i></div>
+                    <h1 class="countup">642</h1>
+                    <span>Live Designs</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                  <div class="single-counter">
+                    <div class="icon color-4"><i class="lni lni-users"></i></div>
+                    <h1 class="countup">42</h1>
+                    <span>Creative Designers</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6">
+            <div class="counter-up-img mb-50">
+              <img src="{% static 'img/counter-up/counter-up-img.svg' %}" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section img-bg pt-110 pb-60">
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-xl-6 col-lg-7">
+            <div class="section-title mb-50">
+              <h1>Have a project in mind?</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-5">
+            <div class="cta-btn text-lg-end mb-50">
+              <a href="#" class="main-btn btn-hover text-uppercase">Start Your Project</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+    {% endblock %}
+
+    
