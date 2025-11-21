@@ -1,0 +1,55 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Slides</h2>
+        <a href="{% url 'slide_create' %}" class="btn btn-primary">Add New Slide</a>
+    </div>
+
+    <!-- Table -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for slide in slides %}
+                    <tr>
+                        <td>{{ slide.title }}</td>
+                        <td>{{ slide.description|truncatechars:50 }}</td>
+                        <td>
+                            {% if slide.image %}
+                                <img src="{{ slide.image.url }}" alt="{{ slide.title }}" width="80">
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'slide_update' slide.id %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'slide_delete' slide.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No slides found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

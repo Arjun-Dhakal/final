@@ -19,31 +19,32 @@
 
         <!-- Contact Body -->
         <div class="row mt-5">
+           
 
             <!-- LEFT SIDE DETAILS -->
             <div class="col-lg-5 mb-5 contact-left">
                 <div class="contact-info">
                     <h6>PHONE</h6>
-                    <p>+0123456789</p>
+                    {{media.office_phone}}
                 </div>
 
                 <div class="contact-info">
                     <h6>E-MAIL</h6>
-                    <p>info@example.com</p>
+                    {{media.office_email}}
                 </div>
 
                 <div class="contact-info">
                     <h6>ADDRESS</h6>
-                    <p>123 Street, New York, USA</p>
+                    {{media.office_address}}
                 </div>
 
                 <div class="contact-info">
                     <h6>FOLLOW US</h6>
                     <div class="social-links">
-                        <a href="#"><i class="lni lni-facebook-filled"></i></a>
-                        <a href="#"><i class="lni lni-twitter-filled"></i></a>
-                        <a href="#"><i class="lni lni-instagram-filled"></i></a>
-                        <a href="#"><i class="lni lni-linkedin-original"></i></a>
+                        <a href="{{media.facebook}}"><i class="lni lni-facebook-filled"></i></a>
+                        <a href="{{media.x}}"><i class="lni lni-twitter-filled"></i></a>
+                        <a href="{{media.instagram}}"><i class="lni lni-instagram-filled"></i></a>
+                        <a href="{{media.linkedin}}"><i class="lni lni-linkedin-original"></i></a>
                     </div>
                 </div>
             </div>

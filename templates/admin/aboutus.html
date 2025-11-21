@@ -1,0 +1,39 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3>About Us List</h3>
+    <a href="{% url 'aboutus_create' %}" class="btn btn-primary mb-3">Add New</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>S.N</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in about_items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.description|truncatechars:50 }}</td>
+                <td>
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" width="80">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'aboutus_update' item.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'aboutus_delete' item.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center">No About Us content found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

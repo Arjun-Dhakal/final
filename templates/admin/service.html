@@ -1,0 +1,42 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Services</h3>
+        <a href="{% url 'service_create' %}" class="btn btn-primary">Add New</a>
+    </div>
+
+    {% if services %}
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ service.title }}</td>
+                    <td>{{ service.description}}</td>
+                    <td>
+                        {% if service.icon %}
+                            <img src="{{ service.icon.url }}" alt="{{ service.title }}" height="40">
+                        {% else %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'service_update' service.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'service_delete' service.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    {% endif %}
+</div>
+{% endblock %}

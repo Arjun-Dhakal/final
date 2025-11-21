@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Media Management</h3>
+        <a href="{% url 'media_create' %}" class="btn btn-primary">Add New Media</a>
+    </div>
+
+    <!-- Display messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Media List -->
+    {% if media %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>S.N</th>
+                        <th>Office Description</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Twitter</th>
+                        <th>Instagram</th>
+                        <th>LinkedIn</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in media %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ m.office_description }}</td>
+                        <td>{{ m.office_phone }}</td>
+                        <td>{{ m.office_address }}</td>
+                        <td>{{ m.office_email }}</td>
+                        <td>{{ m.facebook }}</td>
+                        <td>{{ m.twitter }}</td>
+                        <td>{{ m.instagram }}</td>
+                        <td>{{ m.linkedin }}</td>
+                        <td>
+                            <a href="{% url 'media_update' m.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'media_delete' m.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No media records found.</p>
+    {% endif %}
+</div>
+{% endblock %}

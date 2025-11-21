@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3>{{ action }} Media</h3>
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">{{ action }}</button>
+        <a href="{% url 'media' %}" class="btn btn-secondary">Cancel</a>
+        
+    </form>
+</div>
+{% endblock %}

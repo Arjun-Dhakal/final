@@ -1,0 +1,27 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3>{{ action }} About Us</h3>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Title</label>
+            {{ form.title }}
+        </div>
+        <div class="mb-3">
+            <label>Description</label>
+            {{ form.description }}
+        </div>
+        <div class="mb-3">
+            <label>Image</label>
+            {{ form.image }}
+            {% if form.instance.image %}
+                <img src="{{ form.instance.image.url }}" width="120" class="mt-2">
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ action }}</button>
+        <a href="{% url 'aboutus_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
